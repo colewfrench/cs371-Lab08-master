@@ -201,4 +201,9 @@ public class SoccerDatabase implements SoccerDB {
         return new HashSet<String>();
 	}
 
+    private boolean searchPlayer(String first, String last)
+    {
+        return (soccerPlayers.containsKey(first + "|" + last));
+    }
+
 }
