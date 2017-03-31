@@ -193,6 +193,30 @@ public class SoccerDatabase implements SoccerDB {
 	// get the nTH player
 	@Override
     public SoccerPlayer playerNum(int idx, String teamName) {
+        int count = 0;
+        if(teamName == null)
+        {
+            for (SoccerPlayer sp : soccerPlayers.values())
+            {
+                if (count >= idx)
+                    return sp;
+
+                count++;
+            }
+        }
+        else
+        {
+            for (SoccerPlayer sp : soccerPlayers.values())
+            {
+                if ((sp.getTeamName()).equals(teamName))
+                {
+                    if (count >= idx)
+                        return sp;
+
+                    count++;
+                }
+            }
+        }
         return null;
     }
 
