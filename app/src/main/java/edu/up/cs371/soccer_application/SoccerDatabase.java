@@ -55,7 +55,8 @@ public class SoccerDatabase implements SoccerDB {
      */
     @Override
 	public SoccerPlayer getPlayer(String firstName, String lastName) {
-        return null;
+        String key = firstName + "|" + lastName;
+        return soccerPlayers.get(key);
     }
 
     /**
