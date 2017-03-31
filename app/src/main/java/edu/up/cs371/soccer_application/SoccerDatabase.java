@@ -72,7 +72,8 @@ public class SoccerDatabase implements SoccerDB {
      * @see SoccerDB#bumpGoals(String, String)
      */
     @Override
-    public boolean bumpGoals(String firstName, String lastName) {
+    public boolean bumpGoals(String firstName, String lastName)
+    {
         return false;
     }
 
