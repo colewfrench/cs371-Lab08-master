@@ -5,7 +5,10 @@ import android.util.Log;
 import edu.up.cs371.soccer_application.soccerPlayer.SoccerPlayer;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.PrintWriter;
 import java.util.*;
 
@@ -249,6 +252,24 @@ public class SoccerDatabase implements SoccerDB {
 	// read data from file
     @Override
 	public boolean readData(File file) {
+
+        try
+        {
+            FileInputStream fis = new FileInputStream(file);
+            ObjectInputStream sln = new ObjectInputStream(fis);
+            while(true) {
+                sln.read();
+            }
+
+        }
+        catch(FileNotFoundException fnfe)
+        {
+
+        }
+        catch(IOException ioe)
+        {
+
+        }
         return file.exists();
 	}
 
@@ -281,7 +302,21 @@ public class SoccerDatabase implements SoccerDB {
 	// return list of teams
     @Override
 	public HashSet<String> getTeams() {
-        return new HashSet<String>();
+        String temp;
+        HashSet<String> teamNames = new HashSet<>();
+        for (SoccerPlayer sp: soccerPlayers.values()) {
+            temp = sp.getTeamName();
+            if(teamNames.contains(temp))
+            {
+                //do nothing
+            }
+            else
+            {
+                teamNames.add(temp);
+            }
+
+        }
+        return teamNames;
 	}
 
     private boolean searchPlayer(String first, String last)
