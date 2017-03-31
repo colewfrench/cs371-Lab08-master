@@ -5,6 +5,8 @@ import android.util.Log;
 import edu.up.cs371.soccer_application.soccerPlayer.SoccerPlayer;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
@@ -260,7 +262,36 @@ public class SoccerDatabase implements SoccerDB {
 	// write data to file
     @Override
 	public boolean writeData(File file) {
-        return false;
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            PrintWriter pw = new PrintWriter(fos);
+
+            for (SoccerPlayer sp : soccerPlayers.values())
+            {
+                pw.println(logString(sp.getFirstName()));
+                pw.println(logString(sp.getLastName()));
+                pw.println(logString(sp.getTeamName()));
+                pw.println(logString(sp.getUniform() + ""));
+                pw.println(logString(sp.getGoals() + ""));
+                pw.println(logString(sp.getAssists() + ""));
+                pw.println(logString(sp.getShots() + ""));
+                pw.println(logString(sp.getSaves() + ""));
+                pw.println(logString(sp.getFouls() + ""));
+                pw.println(logString(sp.getYellowCards() + ""));
+                pw.println(logString(sp.getRedCards() + ""));
+            }
+
+            fos.close();
+        } catch (FileNotFoundException fnfe)
+        {
+            // file not found
+            return false;
+        } catch (IOException ioe)
+        {
+            return false;
+        }
+
+        return true;
 	}
 
     /**
