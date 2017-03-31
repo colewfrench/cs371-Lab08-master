@@ -73,6 +73,12 @@ public class SoccerDatabase implements SoccerDB {
      */
     @Override
     public boolean bumpGoals(String firstName, String lastName) {
+        if (searchPlayer(firstName, lastName))
+        {
+            soccerPlayers.get(firstName + "|" + lastName).bumpGoals();
+            return true;
+        }
+
         return false;
     }
 
@@ -83,6 +89,12 @@ public class SoccerDatabase implements SoccerDB {
      */
     @Override
     public boolean bumpAssists(String firstName, String lastName) {
+        if (searchPlayer(firstName, lastName))
+        {
+            soccerPlayers.get(firstName + "|" + lastName).bumpAssists();
+            return true;
+        }
+
         return false;
     }
 
@@ -93,6 +105,12 @@ public class SoccerDatabase implements SoccerDB {
      */
     @Override
     public boolean bumpShots(String firstName, String lastName) {
+        if (searchPlayer(firstName, lastName))
+        {
+            soccerPlayers.get(firstName + "|" + lastName).bumpShots();
+            return true;
+        }
+
         return false;
     }
 
