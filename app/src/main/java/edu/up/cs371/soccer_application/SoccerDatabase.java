@@ -121,6 +121,11 @@ public class SoccerDatabase implements SoccerDB {
      */
     @Override
     public boolean bumpSaves(String firstName, String lastName) {
+        if(this.searchPlayer(firstName,lastName))
+        {
+            soccerPlayers.get(firstName+"|"+lastName).bumpSaves();
+            return true;
+        }
         return false;
     }
 
@@ -131,6 +136,11 @@ public class SoccerDatabase implements SoccerDB {
      */
     @Override
     public boolean bumpFouls(String firstName, String lastName) {
+        if(this.searchPlayer(firstName,lastName))
+        {
+            soccerPlayers.get(firstName+"|"+lastName).bumpFouls();
+            return true;
+        }
         return false;
     }
 
@@ -141,6 +151,11 @@ public class SoccerDatabase implements SoccerDB {
      */
     @Override
     public boolean bumpYellowCards(String firstName, String lastName) {
+        if(this.searchPlayer(firstName,lastName))
+        {
+            soccerPlayers.get(firstName+"|"+lastName).bumpYellowCards();
+            return true;
+        }
         return false;
     }
 
@@ -151,6 +166,11 @@ public class SoccerDatabase implements SoccerDB {
      */
     @Override
     public boolean bumpRedCards(String firstName, String lastName) {
+        if(this.searchPlayer(firstName,lastName))
+        {
+            soccerPlayers.get(firstName+"|"+lastName).bumpRedCards();
+            return true;
+        }
         return false;
     }
 
